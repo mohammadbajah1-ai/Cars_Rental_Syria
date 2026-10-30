@@ -1,0 +1,478 @@
+/* =====================================================================
+   style.css  -  ملف التنسيق الموحد لجميع صفحات موقع تأجير السيارات
+   ---------------------------------------------------------------------
+   الألوان مستوحاة من الهوية البصرية السورية الجديدة (العقاب الذهبي):
+   أخضر داكن مائل إلى الزمردي (تحديث لأخضر العلم) + ذهبي فاتح،
+   مع الأسود والأبيض والأحمر من ألوان العلم السوري.
+   ---------------------------------------------------------------------
+   الأقسام:
+   0) متغيرات الألوان (غيّر الهوية كلها من هنا)
+   1) الخط (نوع وحجم الخط يُحدَّدان من مكان واحد فقط)
+   2) ألوان وتنسيق عناصر الإدخال النصية (من مكان واحد فقط)
+   3) هيكل الصفحة والتنقل
+   4) الجداول والصور
+   5) النماذج ورسائل الخطأ
+   6) النافذة المنبثقة (نتيجة الحجز)
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   0) متغيرات الألوان
+   القيم تقريبية مأخوذة من وصف الهوية (أخضر داكن + ذهبي فاتح)؛
+   إن توفرت أكواد دليل الهوية الرسمي يكفي استبدالها هنا فقط.
+   --------------------------------------------------------------------- */
+:root {
+    /* الأخضر (اللون الأساسي) */
+    --green-900: #07281f;      /* شريط التنقل */
+    --green-800: #0b3b2e;      /* الترويسة */
+    --green-700: #0f5240;      /* العناوين والروابط */
+    --green-600: #17705a;      /* الأزرار / رؤوس الجداول */
+    --green-500: #1f8a70;      /* حالة التمرير */
+    --green-100: #e3f1ec;      /* خلفيات خضراء فاتحة */
+    --green-050: #f1f8f5;
+
+    /* الذهبي (اللون الثانوي) */
+    --gold-600: #a8832f;       /* ذهبي داكن للنص على خلفية فاتحة */
+    --gold-500: #c9a45c;       /* الذهبي الأساسي */
+    --gold-300: #e3cf9c;       /* نص ثانوي على الأخضر الداكن */
+    --gold-100: #f8f1dc;       /* خلفيات ذهبية فاتحة */
+    --gold-050: #fcf8ec;
+
+    /* ألوان العلم */
+    --flag-red: #ce1126;       /* الأحمر: الخطأ والخروج */
+    --flag-red-dark: #9f0d1d;
+    --flag-black: #161616;     /* الأسود */
+    --white: #ffffff;
+
+    /* محايدات دافئة */
+    --ink: #1c2622;            /* لون النص الأساسي */
+    --muted: #5d6b65;
+    --border: #c9d3ce;
+    --page-bg: #f5f3ec;
+}
+
+
+/* ---------------------------------------------------------------------
+   1) الخط: نوع الخط وحجمه يُعرَّفان هنا فقط.
+   باقي العناصر ترثهما (العناوين تستخدم em نسبةً لهذا الحجم).
+   --------------------------------------------------------------------- */
+body {
+    font-family: "Segoe UI", "Noto Sans Arabic", Tahoma, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink);
+    background-color: var(--page-bg);
+    margin: 0;
+    padding: 0;
+}
+
+/* عناصر النماذج لا ترث الخط افتراضياً، لذلك نجبرها على الوراثة من body */
+input,
+textarea,
+select,
+button {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+h1 { font-size: 1.8em; margin: 0.3em 0; color: var(--green-700); }
+h2 {
+    font-size: 1.4em;
+    margin: 0.8em 0 0.4em;
+    color: var(--green-700);
+    padding-right: 10px;
+    border-right: 4px solid var(--gold-500);   /* لمسة ذهبية بجانب العناوين */
+}
+h3 { font-size: 1.15em; margin: 0.6em 0 0.3em; color: var(--green-800); }
+
+
+/* ---------------------------------------------------------------------
+   2) عناصر الإدخال النصية: اللون والحدود والخلفية من مكان واحد.
+   لتغيير لون كل مربعات النص في الموقع يكفي تعديل هذه القاعدة.
+   --------------------------------------------------------------------- */
+input[type="text"],
+textarea,
+select {
+    color: var(--green-900);
+    background-color: var(--gold-050);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 8px;
+    width: 90%;
+    max-width: 380px;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    background-color: var(--white);
+    border-color: var(--green-600);
+    outline: 2px solid var(--gold-300);
+}
+
+/* حقل غير صالح بعد التحقق (تضيفه جافاسكريبت) */
+input.invalid,
+textarea.invalid {
+    border-color: var(--flag-red);
+    background-color: #fdecee;
+}
+
+
+/* ---------------------------------------------------------------------
+   3) هيكل الصفحة والتنقل
+   --------------------------------------------------------------------- */
+#wrapper {
+    max-width: 980px;
+    margin: 0 auto;
+    background-color: var(--white);
+    box-shadow: 0 0 14px rgba(7, 40, 31, 0.18);
+    min-height: 100vh;
+}
+
+#header {
+    background-color: var(--green-800);
+    color: var(--white);
+    padding: 14px 20px;
+    overflow: hidden;
+    border-bottom: 4px solid var(--gold-500);   /* خط ذهبي تحت الترويسة */
+}
+
+#header img {
+    float: right;
+    margin-left: 14px;
+}
+
+#header h1 {
+    color: var(--white);
+    margin: 0;
+}
+
+#header p {
+    margin: 0;
+    color: var(--gold-300);
+}
+
+/* شريط التنقل */
+#nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: var(--green-900);
+    overflow: hidden;
+}
+
+#nav li {
+    float: right;
+}
+
+#nav a {
+    display: block;
+    padding: 12px 22px;
+    color: var(--white);
+    text-decoration: none;
+}
+
+#nav a:hover {
+    background-color: var(--green-600);
+}
+
+#nav a.active {
+    background-color: var(--gold-500);
+    color: var(--flag-black);
+    font-weight: bold;
+}
+
+#nav li.exit {
+    float: left;               /* زر الخروج في الطرف المقابل */
+}
+
+#nav li.exit a {
+    background-color: var(--flag-red);
+}
+
+#nav li.exit a:hover {
+    background-color: var(--flag-red-dark);
+}
+
+#content {
+    padding: 18px 24px 30px 24px;
+}
+
+#footer {
+    text-align: center;
+    padding: 12px;
+    background-color: var(--green-900);
+    color: var(--gold-300);
+    font-size: 0.85em;
+    border-top: 3px solid var(--gold-500);
+}
+
+a {
+    color: var(--green-700);
+}
+
+a:hover {
+    color: var(--gold-600);
+}
+
+.note-box {
+    background-color: var(--gold-100);
+    border-right: 5px solid var(--gold-500);
+    padding: 8px 14px;
+    margin: 14px 0;
+}
+
+.goodbye {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+/* إخفاء العناصر افتراضياً (يظهرها jQuery عند الحاجة) */
+.hidden {
+    display: none;
+}
+
+/* نص مخصص لقارئات الشاشة فقط (للـ label المرتبط بمربعات الاختيار في الجدول) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+
+/* ---------------------------------------------------------------------
+   4) الجداول والصور
+   --------------------------------------------------------------------- */
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10px 0;
+}
+
+caption {
+    font-weight: bold;
+    padding: 6px;
+    color: var(--green-700);
+}
+
+th,
+td {
+    border: 1px solid var(--border);
+    padding: 8px 10px;
+    text-align: center;
+}
+
+th {
+    background-color: var(--green-700);
+    color: var(--white);
+    border-color: var(--green-800);
+}
+
+tbody tr.car-row:nth-child(4n+1) {
+    background-color: var(--green-050);
+}
+
+tr.car-row:hover {
+    background-color: var(--gold-100);
+}
+
+/* صف السيارة المختارة */
+tr.selected {
+    background-color: #d4ecdf !important;
+}
+
+/* صف التفاصيل الذي يظهر ويختفي بواسطة jQuery */
+tr.details-row td {
+    background-color: var(--gold-050);
+    text-align: right;
+}
+
+ul.details-list {
+    margin: 4px 0;
+    padding-right: 20px;
+    columns: 2;
+}
+
+td.code,
+td.model {
+    direction: ltr;
+}
+
+img.car-img {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--green-600);
+}
+
+
+/* ---------------------------------------------------------------------
+   5) النماذج ورسائل الخطأ
+   --------------------------------------------------------------------- */
+fieldset {
+    border: 1px solid var(--gold-500);
+    border-radius: 6px;
+    margin: 14px 0;
+    padding: 10px 16px 14px 16px;
+}
+
+legend {
+    font-weight: bold;
+    color: var(--green-700);
+    padding: 0 8px;
+}
+
+.field {
+    margin: 10px 0;
+}
+
+.field label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+label.inline {
+    display: inline;
+    font-weight: normal;
+    margin-left: 14px;
+}
+
+.required {
+    color: var(--flag-red);
+}
+
+.hint {
+    display: block;
+    color: var(--muted);
+    font-size: 0.85em;
+}
+
+/* رسالة خطأ تحت الحقل */
+.error {
+    display: block;
+    color: var(--flag-red);
+    font-size: 0.9em;
+    min-height: 1.2em;
+}
+
+/* صندوق رسالة عامة */
+.message {
+    padding: 8px 14px;
+    border-radius: 4px;
+    margin: 8px 0;
+}
+
+.message.error-box {
+    background-color: #fdecee;
+    color: var(--flag-red-dark);
+    border: 1px solid #f0a4ad;
+}
+
+#selectedSummary {
+    background-color: var(--green-100);
+    border: 1px solid var(--green-600);
+    border-radius: 4px;
+    padding: 6px 14px;
+    margin-bottom: 10px;
+}
+
+button,
+input[type="submit"],
+input[type="reset"] {
+    background-color: var(--green-600);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    padding: 9px 26px;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    background-color: var(--green-800);
+}
+
+button:focus-visible,
+input[type="submit"]:focus-visible,
+input[type="reset"]:focus-visible {
+    outline: 2px solid var(--gold-500);
+    outline-offset: 2px;
+}
+
+input[type="reset"] {
+    background-color: var(--flag-black);
+}
+
+input[type="reset"]:hover {
+    background-color: #3a3a3a;
+}
+
+
+/* ---------------------------------------------------------------------
+   6) النافذة المنبثقة لنتيجة الحجز
+   --------------------------------------------------------------------- */
+.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(7, 40, 31, 0.7);
+    z-index: 1000;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 92%;
+    max-width: 640px;
+    max-height: 88%;
+    overflow-y: auto;
+    background-color: var(--white);
+    border-radius: 8px;
+    border-top: 5px solid var(--gold-500);
+    padding: 18px 24px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+}
+
+.modal h2 {
+    margin-top: 0;
+}
+
+table.result-table th {
+    background-color: var(--green-700);
+}
+
+tr.total-row td {
+    font-weight: bold;
+    background-color: var(--gold-100);
+}
+
+.final-amount {
+    font-size: 1.25em;
+    color: var(--green-700);
+    font-weight: bold;
+}
+
+.discount-line {
+    color: var(--flag-red);
+}
