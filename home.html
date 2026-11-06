@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ar" lang="ar" dir="rtl">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>الصفحة الرئيسية - مكتب الشام لتأجير السيارات</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="myFunctions.js"></script>
+</head>
+<body>
+<div id="wrapper">
+
+    <div id="header">
+        <div class="header-logo">
+            <img src="images/logo.svg" alt="شعار مكتب الشام لتأجير السيارات" width="56" height="56" />
+        </div>
+        <h1>مكتب الشام لتأجير السيارات</h1>
+        <p>Car Rental Website - وظيفة مقرر تصميم وتطوير تطبيقات الوب (IWB202)</p>
+    </div>
+
+    <ul id="nav">
+        <li><a href="home.html" class="active">الرئيسية</a></li>
+        <li><a href="AboutUs.html">من نحن</a></li>
+        <li><a href="Cars.html">السيارات</a></li>
+        <li class="exit"><a href="home.html" class="exit-link" id="exitLink">خروج</a></li>
+    </ul>
+
+    <div id="content">
+
+        <h2>أسماء الطلاب المشاركين في الوظيفة</h2>
+        <div class="table-wrap">
+            <table summary="جدول يتضمن أسماء الطلاب المشاركين باللغتين العربية والإنكليزية ومعرفاتهم الجامعية وأرقام الصفوف">
+                <caption>بيانات مجموعة الطلاب</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">م</th>
+                        <th scope="col">الاسم الكامل (بالعربية)</th>
+                        <th scope="col">Full Name (English)</th>
+                        <th scope="col">المعرّف الجامعي (ID)</th>
+                        <th scope="col">الصف</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>ميره معتز نطفجي</td>
+                        <td class="ltr-cell">Mira Moataz Natafji</td>
+                        <td class="ltr-cell">Mira_448939</td>
+                        <td>C4</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>رغد محمد علوش</td>
+                        <td class="ltr-cell">Raghad Mohammad Alloush</td>
+                        <td class="ltr-cell">Raghad_445469</td>
+                        <td>C4</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>شام نورالله العمارين</td>
+                        <td class="ltr-cell">Sham Nourallah Al-Amarin</td>
+                        <td class="ltr-cell">sham_333128</td>
+                        <td>C5</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>ياسر خليل الاسماعيل</td>
+                        <td class="ltr-cell">Yasser Khalil Al-Ismail</td>
+                        <td class="ltr-cell">yasser_397884</td>
+                        <td>C4</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>محمد محمد زاهر دباجه</td>
+                        <td class="ltr-cell">Mohammad Mohammad Zaher Dabajeh</td>
+                        <td class="ltr-cell">mohammad_342518</td>
+                        <td>C5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>رابط النشر على الإنترنت</h2>
+        <p>
+            تمت استضافة الموقع على مخدم مجاني (GitHub Pages) ويمكن تصفحه عبر الرابط التالي:
+            <a href="https://mohammadbajah1-ai.github.io/Cars_Rental_Syria/home.html">https://mohammadbajah1-ai.github.io/Cars_Rental_Syria/home.html</a>
+        </p>
+
+        <h2>ملاحظات حول الوظيفة</h2>
+        <div class="note-box">
+            <ul>
+                <li>تم بناء جميع صفحات الموقع (<span dir="ltr">home.html</span>، <span dir="ltr">AboutUs.html</span>، <span dir="ltr">Cars.html</span>) وفق قواعد لغة XHTML 1.0 Strict القياسية.</li>
+                <li>تم توحيد تنسيق الصفحات والخطوط وحقول الإدخال النصية ضمن ملف تنسيق واحد (<span dir="ltr">style.css</span>)، ووضع كافة التوابع البرمجية ضمن ملف (<span dir="ltr">myFunctions.js</span>).</li>
+                <li>تتيح صفحة السيارات إظهار وإخفاء التفاصيل الإضافية لسيارة أو عدة سيارات في آن واحد باستخدام مكتبة jQuery، مع إمكانية اختيار سيارة أو أكثر وإتمام طلب الحجز.</li>
+                <li>يتحقق الموقع من صحة حقول نموذج الحجز (الاسم بالعربية، الرقم الوطني من 11 خانة وأول خانتين 01-14، تاريخا البداية والنهاية بصيغة <span dir="ltr">yyyy-mm-dd</span>، رقم الموبايل لشبكتي Syriatel و MTN، والبريد الإلكتروني) ويحسب المبلغ الإجمالي مع خصم 10% عند تجاوز مدة التأجير 7 أيام.</li>
+                <li>يرفق مع ملفات الموقع تقرير مقترح ميزة الذكاء الاصطناعي (<span dir="ltr">AI_Feature_Report.docx</span>) وملف أسماء الطلاب (<span dir="ltr">names.txt</span>).</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div id="footer">
+        &#169; 2026 مكتب الشام لتأجير السيارات - الجامعة الافتراضية السورية (IWB202)
+    </div>
+
+</div>
+</body>
+</html>
